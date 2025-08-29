@@ -120,19 +120,36 @@ function closeSuccessModal() {
 
 async function sendOrderToJSONBin(orderData) {
     try {
-        const orderWithTimestamp = {
+        // Get existing orders first
+        const getResponse = await fetch('https://api.jsonbin.io/v3/b/68b215b9d0ea881f406aa427/latest', {
+            headers: {
+                'X-Master-Key': '$2a$10$W7Y1w05rI7FhqCSUCB/tRuDJYO2fRlTwgv2s3je3OlExS3oOz9UzG'
+            }
+        });
+        
+        let existingOrders = [];
+        if (getResponse.ok) {
+            const data = await getResponse.json();
+            existingOrders = Array.isArray(data.record) ? data.record : [];
+        }
+        
+        // Add new order
+        const newOrder = {
             ...orderData,
             timestamp: new Date().toISOString(),
             orderId: 'BLZ-' + Date.now()
         };
         
+        existingOrders.push(newOrder);
+        
+        // Update bin with all orders
         const response = await fetch('https://api.jsonbin.io/v3/b/68b215b9d0ea881f406aa427', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
                 'X-Master-Key': '$2a$10$W7Y1w05rI7FhqCSUCB/tRuDJYO2fRlTwgv2s3je3OlExS3oOz9UzG'
             },
-            body: JSON.stringify(orderWithTimestamp)
+            body: JSON.stringify(existingOrders)
         });
         
         if (response.ok) {
