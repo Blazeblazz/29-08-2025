@@ -372,10 +372,20 @@ header .container {
     font-size: 2.5rem;
     cursor: pointer;
     font-weight: 300;
+    color: #000;
+    z-index: 1001;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
 }
 
 .close:hover {
-    color: #666;
+    background: #f0f0f0;
+    color: #000;
 }
 
 .order-summary {
