@@ -91,8 +91,8 @@ document.getElementById('quickOrderForm').addEventListener('submit', function(e)
         }
     };
     
-    // Simulation du traitement de commande
-    console.log('Commande soumise:', orderData);
+    // Send order to JSONBin
+    sendOrderToJSONBin(orderData);
     
     // Close quick buy modal
     document.getElementById('quickBuyModal').style.display = 'none';
@@ -116,6 +116,33 @@ function updateCartCount() {
 
 function closeSuccessModal() {
     document.getElementById('successModal').style.display = 'none';
+}
+
+async function sendOrderToJSONBin(orderData) {
+    try {
+        const orderWithTimestamp = {
+            ...orderData,
+            timestamp: new Date().toISOString(),
+            orderId: 'BLZ-' + Date.now()
+        };
+        
+        const response = await fetch('https://api.jsonbin.io/v3/b/68b215b9d0ea881f406aa427', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Master-Key': '$2a$10$W7Y1w05rI7FhqCSUCB/tRuDJYO2fRlTwgv2s3je3OlExS3oOz9UzG'
+            },
+            body: JSON.stringify(orderWithTimestamp)
+        });
+        
+        if (response.ok) {
+            console.log('Commande envoyée avec succès à JSONBin');
+        } else {
+            console.error('Erreur lors de l\'envoi:', response.statusText);
+        }
+    } catch (error) {
+        console.error('Erreur réseau:', error);
+    }
 }
 
 function sendToWhatsApp(orderData) {
