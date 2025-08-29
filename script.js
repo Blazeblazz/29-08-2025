@@ -118,48 +118,40 @@ function closeSuccessModal() {
     document.getElementById('successModal').style.display = 'none';
 }
 
-async function sendOrderToJSONBin(orderData) {
-    try {
-        // Get existing orders first
-        const getResponse = await fetch('https://api.jsonbin.io/v3/b/68b215b9d0ea881f406aa427/latest', {
-            headers: {
-                'X-Master-Key': '$2a$10$W7Y1w05rI7FhqCSUCB/tRuDJYO2fRlTwgv2s3je3OlExS3oOz9UzG'
-            }
-        });
-        
-        let existingOrders = [];
-        if (getResponse.ok) {
-            const data = await getResponse.json();
-            existingOrders = Array.isArray(data.record) ? data.record : [];
-        }
-        
-        // Add new order
-        const newOrder = {
-            ...orderData,
-            timestamp: new Date().toISOString(),
-            orderId: 'BLZ-' + Date.now()
-        };
-        
-        existingOrders.push(newOrder);
-        
-        // Update bin with all orders
-        const response = await fetch('https://api.jsonbin.io/v3/b/68b215b9d0ea881f406aa427', {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-Master-Key': '$2a$10$W7Y1w05rI7FhqCSUCB/tRuDJYO2fRlTwgv2s3je3OlExS3oOz9UzG'
-            },
-            body: JSON.stringify(existingOrders)
-        });
-        
+function sendOrderToJSONBin(orderData) {
+    const newOrder = {
+        ...orderData,
+        timestamp: new Date().toISOString(),
+        orderId: 'BLZ-' + Date.now()
+    };
+    
+    fetch('https://api.jsonbin.io/v3/b/68b215b9d0ea881f406aa427', {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Master-Key': '$2a$10$W7Y1w05rI7FhqCSUCB/tRuDJYO2fRlTwgv2s3je3OlExS3oOz9UzG'
+        },
+        body: JSON.stringify(newOrder)
+    })
+    .then(response => {
         if (response.ok) {
-            console.log('Commande envoyée avec succès à JSONBin');
-        } else {
-            console.error('Erreur lors de l\'envoi:', response.statusText);
+            console.log('Order sent successfully');
+            return response.json();
         }
-    } catch (error) {
-        console.error('Erreur réseau:', error);
-    }
+        throw new Error('Network response was not ok');
+    })
+    .then(data => console.log('Success:', data))
+    .catch(error => {
+        console.error('Error:', error);
+        // Fallback: try with different endpoint
+        fetch('https://jsonbin.io/68b215b9d0ea881f406aa427', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newOrder)
+        }).catch(e => console.error('Fallback failed:', e));
+    });
 }
 
 function sendToWhatsApp(orderData) {
