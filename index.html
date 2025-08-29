@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="T-shirts premium Blaze - Livraison gratuite partout au Maroc. Compatible S M L.">
+    <title>Blaze. - T-Shirts Premium Maroc</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>blaze.</h1>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2>T-Shirts Premium</h2>
+                <p>Fabriqué au Maroc 🇲🇦</p>
+            </div>
+        </section>
+
+        <section class="products">
+            <div class="container">
+                <div class="product-card featured">
+                    <div class="badge">NOUVEAU</div>
+                    <div class="product-images">
+                        <img class="main-image" src="img/Black.webp" alt="T-Shirt Nouveau Blaze">
+                        <div class="thumbnails">
+                            <img class="thumb active" src="img/Black.webp" alt="Vue 1">
+                            <img class="thumb" src="img/Beige.webp" alt="Vue 2">
+                            <img class="thumb" src="img/Black-2.webp" alt="Vue 3">
+                            <img class="thumb" src="img/Beige-2.webp" alt="Vue 4">
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>T-Shirt Signature Blaze</h3>
+                        <p class="price">139 DH</p>
+                        <p class="delivery">🚚 Livraison Gratuite Tout Maroc</p>
+                        <p class="size-info">Compatible avec S M L</p>
+                        <div class="color-variants">
+                            <span class="color" data-color="Beige" style="background: #f5f5dc;"></span>
+                            <span class="color" data-color="Noir" style="background: #000;"></span>
+                        </div>
+                        <button class="quick-buy" data-product="new-arrival" data-price="139">
+                            <i class="fas fa-bolt"></i> Achat Rapide
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-card pack">
+                    <div class="badge">MEILLEURE OFFRE</div>
+                    <div class="product-images">
+                        <img class="main-image" src="img/pack.webp" alt="Pack 3 T-Shirts Blaze">
+                        <div class="thumbnails">
+                            <img class="thumb active" src="img/pack.webp" alt="Vue 1">
+                            <img class="thumb" src="img/pack-1.webp" alt="Vue 2">
+                            <img class="thumb" src="img/pack-2.webp" alt="Vue 3">
+                            <img class="thumb" src="img/pack-3.webp" alt="Vue 4">
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Pack 3 T-Shirts Blaze</h3>
+                        <p class="price">329 DH <span class="original">417 DH</span></p>
+                        <p class="savings">Économisez 88 DH!</p>
+                        <p class="delivery">🚚 Livraison Gratuite Tout Maroc</p>
+                        <p class="size-info">Compatible avec S M L</p>
+                        <button class="quick-buy" data-product="3-pack" data-price="329">
+                            <i class="fas fa-bolt"></i> Achat Rapide
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="social-proof">
+            <div class="container">
+                <h3>Suivez-nous sur les réseaux sociaux</h3>
+                <div class="social-links">
+                    <a href="#" class="social-btn instagram">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                    <a href="#" class="social-btn facebook">
+                        <i class="fab fa-facebook"></i> Facebook
+                    </a>
+                    <a href="#" class="social-btn tiktok">
+                        <i class="fab fa-tiktok"></i> TikTok
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="quick-buy-modal" id="quickBuyModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Achat Rapide</h3>
+            <div class="order-summary">
+                <div class="product-details"></div>
+                <div class="total"></div>
+            </div>
+            <form id="quickOrderForm">
+                <input type="text" placeholder="Nom Complet" required>
+                <input type="tel" placeholder="Numéro de Téléphone" required>
+                <input type="text" placeholder="Ville" required>
+                <button type="submit" class="confirm-order">
+                    <i class="fas fa-check"></i> Confirmer Commande
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="success-modal" id="successModal">
+        <div class="modal-content">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Commande Confirmée!</h3>
+            <p>Nous vous contacterons sous 24h pour confirmer la livraison.</p>
+            <button onclick="closeSuccessModal()">Continuer Shopping</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
