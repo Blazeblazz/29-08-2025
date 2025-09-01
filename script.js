@@ -49,6 +49,16 @@ document.querySelectorAll('.quick-buy').forEach(button => {
             type: this.dataset.product
         };
         
+        // Track Facebook Pixel AddToCart event
+        if (typeof fbq !== 'undefined') {
+            fbq('track', 'AddToCart', {
+                value: selectedProduct.price,
+                currency: 'MAD',
+                content_name: selectedProduct.name,
+                content_type: 'product'
+            });
+        }
+        
         showQuickBuyModal();
     });
 });
@@ -88,6 +98,16 @@ document.getElementById('quickOrderForm').addEventListener('submit', function(e)
             city: this.querySelector('input[placeholder="Ville"]').value
         }
     };
+    
+    // Track Facebook Pixel Purchase event
+    if (typeof fbq !== 'undefined') {
+        fbq('track', 'Purchase', {
+            value: selectedProduct.price,
+            currency: 'MAD',
+            content_name: selectedProduct.name,
+            content_type: 'product'
+        });
+    }
     
     // Send order to JSONBin and Google Sheets
     sendOrderToJSONBin(orderData);
