@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merci - Blaze</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '2359981194416700');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=2359981194416700&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+</head>
+<body>
+    <div class="thank-you">
+        <div class="brand">blaze.</div>
+        
+        <div class="success-animation">
+            <div class="checkmark">
+                <svg viewBox="0 0 52 52">
+                    <circle cx="26" cy="26" r="25" fill="none"/>
+                    <path fill="none" d="m14.1 27.2l7.1 7.2 16.7-16.8"/>
+                </svg>
+            </div>
+        </div>
+        
+        <h1>Commande confirmée ! 🔥</h1>
+        <p class="subtitle">Merci pour votre confiance</p>
+        
+        <div class="order-card">
+            <div class="product-info">
+                <img src="img/Black.webp" alt="World Tee">
+                <div class="details">
+                    <h3>World Tee Blaze</h3>
+                    <div class="price">139 DH</div>
+                    <div class="shipping">🚚 Livraison gratuite</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="next-step">
+            <div class="icon">📞</div>
+            <p>Nous vous contacterons sous <strong>24h</strong> pour confirmer la livraison</p>
+        </div>
+        
+        <a href="index.html" class="continue-btn">Continuer le shopping</a>
+    </div>
+
+    <style>
+        * { box-sizing: border-box; }
+        body { 
+            margin: 0; 
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            background: white;
+            min-height: 100vh;
+        }
+        
+        .thank-you { 
+            text-align: center; 
+            padding: 40px 20px; 
+            max-width: 420px; 
+            margin: 0 auto;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: #1f2937;
+        }
+        
+        .brand { 
+            font-size: 1.8rem; 
+            font-weight: 300;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .success-animation {
+            margin: 20px 0 30px;
+        }
+        
+        .checkmark {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .checkmark svg {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: block;
+            stroke-width: 3;
+            stroke: #16a34a;
+            stroke-miterlimit: 10;
+            box-shadow: inset 0px 0px 0px #16a34a;
+            animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+        }
+        
+        .checkmark circle {
+            stroke-dasharray: 166;
+            stroke-dashoffset: 166;
+            stroke-width: 3;
+            stroke-miterlimit: 10;
+            stroke: #16a34a;
+            fill: rgba(22, 163, 74, 0.1);
+            animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+        }
+        
+        .checkmark path {
+            transform-origin: 50% 50%;
+            stroke-dasharray: 48;
+            stroke-dashoffset: 48;
+            animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+        }
+        
+        @keyframes stroke {
+            100% { stroke-dashoffset: 0; }
+        }
+        
+        @keyframes scale {
+            0%, 100% { transform: none; }
+            50% { transform: scale3d(1.1, 1.1, 1); }
+        }
+        
+        @keyframes fill {
+            100% { box-shadow: inset 0px 0px 0px 30px #16a34a; }
+        }
+        
+        h1 { 
+            font-size: 1.8rem; 
+            margin: 0 0 10px;
+            font-weight: 600;
+        }
+        
+        .subtitle {
+            opacity: 0.8;
+            margin-bottom: 30px;
+            font-size: 1rem;
+        }
+        
+        .order-card { 
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 20px 0;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            color: #1f2937;
+        }
+        
+        .product-info {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .product-info img {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+        
+        .details {
+            text-align: left;
+            flex: 1;
+        }
+        
+        .details h3 {
+            margin: 0 0 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #dc2626;
+            margin-bottom: 4px;
+        }
+        
+        .shipping {
+            font-size: 0.9rem;
+            color: #16a34a;
+            font-weight: 500;
+        }
+        
+        .next-step {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .next-step .icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+        
+        .next-step p {
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+        
+        .continue-btn { 
+            display: inline-block;
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 30px;
+            box-shadow: 0 4px 16px rgba(220, 38, 38, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .continue-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+        }
+        
+        @media (max-width: 480px) {
+            .thank-you { padding: 30px 16px; }
+            .order-card { padding: 20px; }
+            .product-info { gap: 12px; }
+            .product-info img { width: 50px; height: 50px; }
+        }
+    </style>
+</body>
+</html>

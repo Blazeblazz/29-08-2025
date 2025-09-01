@@ -116,8 +116,12 @@ document.getElementById('quickOrderForm').addEventListener('submit', function(e)
     // Close quick buy modal
     document.getElementById('quickBuyModal').style.display = 'none';
     
-    // Show success modal
-    document.getElementById('successModal').style.display = 'block';
+    // Redirect to appropriate thank you page
+    if (selectedProduct.type === '3-pack') {
+        window.location.href = 'thank-you-pack.html';
+    } else {
+        window.location.href = 'thank-you-world-tee.html';
+    }
     
     // Update cart count
     updateCartCount();
