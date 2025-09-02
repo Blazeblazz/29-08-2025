@@ -43,14 +43,14 @@
         
         <div class="order-card">
             <div class="product-info">
-                <img src="img/Pack.webp" alt="Pack 3 T-Shirts">
+                <img id="productImg" src="" alt="">
                 <div class="details">
-                    <h3>Pack 3 T-Shirts Blaze</h3>
+                    <h3 id="productName"></h3>
                     <div class="price-section">
-                        <span class="price">329 DH</span>
-                        <span class="old-price">417 DH</span>
+                        <span id="productPrice" class="price"></span>
+                        <span id="oldPrice" class="old-price" style="display:none;"></span>
                     </div>
-                    <div class="savings">💰 Économie: 88 DH</div>
+                    <div id="savings" class="savings" style="display:none;"></div>
                     <div class="shipping">🚚 Livraison gratuite</div>
                 </div>
             </div>
@@ -63,6 +63,41 @@
         
         <a href="index.html" class="continue-btn">Continuer le shopping</a>
     </div>
+
+    <script>
+        const products = {
+            pack: {
+                name: "Pack 3 T-Shirts Blaze",
+                image: "img/Pack.webp",
+                price: "329 DH",
+                oldPrice: "417 DH",
+                savings: "💰 Économie: 88 DH"
+            },
+            tee: {
+                name: "World Tee Blaze",
+                image: "img/Black.webp",
+                price: "139 DH"
+            }
+        };
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const product = urlParams.get('product') || 'tee';
+        const productData = products[product];
+
+        if (productData) {
+            document.getElementById('productImg').src = productData.image;
+            document.getElementById('productImg').alt = productData.name;
+            document.getElementById('productName').textContent = productData.name;
+            document.getElementById('productPrice').textContent = productData.price;
+            
+            if (productData.oldPrice) {
+                document.getElementById('oldPrice').textContent = productData.oldPrice;
+                document.getElementById('oldPrice').style.display = 'inline';
+                document.getElementById('savings').textContent = productData.savings;
+                document.getElementById('savings').style.display = 'block';
+            }
+        }
+    </script>
 
     <style>
         * { box-sizing: border-box; }
