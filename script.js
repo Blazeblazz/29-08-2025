@@ -116,11 +116,11 @@ document.getElementById('quickOrderForm').addEventListener('submit', function(e)
     // Close quick buy modal
     document.getElementById('quickBuyModal').style.display = 'none';
     
-    // Redirect to appropriate thank you page
+    // Redirect to unified thank you page
     if (selectedProduct.type === '3-pack') {
-        window.location.href = 'thank-you-pack.html';
+        window.location.href = 'thank-you.html?product=pack';
     } else {
-        window.location.href = 'thank-you-world-tee.html';
+        window.location.href = 'thank-you.html?product=tee';
     }
     
     // Update cart count
